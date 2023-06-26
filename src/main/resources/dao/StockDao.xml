@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cg.dao.ArticleDao">
+<!--    int ArticleCount(String name);-->
+    <select id="ArticleCount" resultType="Integer">
+        select count(id) from article where name like '%${name}%'
+    </select>
+
+<!--    List<Article> GetArticlePage(Integer pageNum, Integer pageSize, String name);-->
+    <select id="GetArticlePage" resultType="com.cg.entity.Article">
+        select  * from article
+        where name like '%${name}%'
+            limit ${pageNum},${pageSize}
+    </select>
+
+<!--int AddArticle(Article article);-->
+    <insert id="AddArticle">
+        insert into article
+            (id,name,type,price)values (#{id},#{name},#{type},#{price})
+    </insert>
+
+<!--    int UpdateArticle(Article article);-->
+    <update id="UpdateArticle">
+        update article
+        <set>
+            <if test="name != null">id=#{name},</if>
+            <if test="type != null">type=#{type},</if>
+            <if test="price != null">price=#{price}</if>
+        </set>
+        where id=#{id}
+    </update>
+
+<!--    int DeleteArticle(String id);-->
+    <delete id="DeleteArticle">
+        delete from article where id=#{id}
+    </delete>
+
+</mapper>
