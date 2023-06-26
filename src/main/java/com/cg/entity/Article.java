@@ -1,4 +1,4 @@
-package com.cg.warehouseafter.entity;
+package com.cg.entity;
 
 
 import lombok.Data;
@@ -13,12 +13,12 @@ import lombok.Data;
 @Data
 public class Article {
     //标识
-    private String id;
+    private String id;//UUID
     //商品名称
     private String name;
     //规格
     private String type;
     //单价
-    private Object price;
+    private Float price;
 }
 

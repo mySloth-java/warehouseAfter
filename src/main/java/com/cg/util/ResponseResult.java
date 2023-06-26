@@ -1,13 +1,10 @@
-package com.cg.warehouseafter.util;
+package com.cg.util;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.io.Serializable;
 
-/**
- * @author cgJavaAfter
- * @date 2023-05-14 23:40
- */
+
 @JsonInclude(JsonInclude.Include.NON_NULL)//空的值不会序列化
 public class ResponseResult<T> implements Serializable {
     private Integer code;
